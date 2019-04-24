@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ppppppppp</title>
+</head>
+<body>
+	<form method="get" accept-charset="utf-8">
+		Amout<br>
+		<input type="text" id="input" name="" value="">
+		<br>
+		From Currency <br>
+		<select id="currFrom">
+			<option value="VND">Việt Nam Đồng (VND)</option>
+			<option value="USD">Đô la Mỹ (USD)</option>
+			
+		</select>
+		<br>
+		To Currency <br>
+		<select id="currTo">
+			<option value="VND">Việt Nam Đồng (VND)</option>
+			<option value="USD">Đô la Mỹ (USD)</option>
+			
+		</select>
+		<br>
+		<input type="submit" onclick="convert()" value="Convert">
+		<br>
+	</form>
+
+	<script>
+		function convert() {
+			// khai báo biến lấy giá trị value qua id
+			let input = document.getElementById('input').value;
+			let currFrom = document.getElementById('currFrom').value;
+			let currTo = document.getElementById('currTo').value;
+
+			// chuyển đổi từ kiểu chuỗi input sang kiểu số
+			let inputsss = parseInt(input);
+
+			// so sánh value trong currFrom và currTo
+			if (currFrom == currTo) {
+				let result = input;
+				alert(result);
+			} else if (currFrom=="USD" && currTo==="VND") {
+				// so sánh giá trị chuyển đổi currFrom USD sang currTo VND
+				let result = inputsss * 23000;
+				alert("Chuyen tu USD sang VND: " + result);
+			} else if (currFrom=="VND" && currTo=="USD") {
+				// so sánh giá trị chuyển đổi currFrom VND sang currTo USD
+				let result = inputsss / 23000;
+				alert("Chuyen tu VND sang USD: " + result);
+			};
+		}
+	</script>
+</body>
+</html>
