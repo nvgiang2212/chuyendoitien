@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chuyen doi tien</title>
+</head>
+<body>
+	<div style="text-align: center;">
+		<form method="get" accept-charset="utf-8">
+			Amout:<br>
+			<input type="text" id="input" value="">
+			<br>
+			From Currency<br>
+			<select id="CurrFrom">
+				<option value="VND">Viet Nam Dong (VND)</option>
+				<option value="USD">Do la My (USD)</option>
+				<option value="LAK">Kip Lao (LAK)</option>
+				<option value="RUB">Rup Nga (RUB)</option>
+			</select>
+			<br>
+			To Currency<br>
+			<select id="CurrTo">
+				<option value="VND">Viet Nam Dong (VND)</option>
+				<option value="USD">Do la My (USD)</option>
+				<option value="LAK">Kip Lao (LAK)</option>
+				<option value="RUB">Rup Nga (RUB)</option>
+			</select>
+			<br>
+			<br>
+			<input type="button" onclick="convert()" value="Convert">
+			<h2 id="demo" style="color: red;"></h2>
+		</form>
+	</div>
+	
+
+	<script>
+		function convert() {
+			// Lay gia tri value qua id
+			let input = document.getElementById('input').value;
+			let currFrom = document.getElementById('CurrFrom').value;
+			let currTo = document.getElementById('CurrTo').value;
+			
+			// Chuyen doi kieu chuoi sang kieu Float
+			let inputss = parseFloat(input);
+			
+			// So sanh 
+			if (currFrom == currTo) {
+				let result = inputss;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="USD" && currTo=="VND") {
+				// USD ---> VND
+				let result = inputss * 23000;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="VND" && currTo=="USD") {
+				// VND ---> USD
+				let result = inputss / 23000;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="LAK" && currTo=="VND") {
+				// LAK ---> VND
+				let result = inputss / 2680;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="VND" && currTo=="LAK") {
+				// VND ---> LAK
+				let result = inputss * 2680;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="LAK" && currTo=="USD") {
+				// LAK ---> USD
+				let result = inputss / 8500;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="USD" && currTo=="LAK") {
+				// USD ---> LAK
+				let result = inputss * 8500;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="RUB" && currTo=="VND") {
+				// RUB ---> VND
+				let result = inputss * 363;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="VND" && currTo=="RUB") {
+				// VND ---> RUB
+				let result = inputss / 363;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="RUB" && currTo=="USD") {
+				// RUB ---> USD
+				let result = inputss / 63.98;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="USD" && currTo=="RUB") {
+				// USD ---> RUB
+				let result = inputss * 63.98;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="RUB" && currTo=="LAK") {
+				// RUB ---> LAK
+				let result = inputss * 130;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			} else if (currFrom=="LAK" && currTo=="RUB") {
+				// LAK ---> RUB
+				let result = inputss / 130;
+				document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${result}`;
+			};
+		}
+	</script>
+</body>
+</html>
