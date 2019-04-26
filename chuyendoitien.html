@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ppppppppp</title>
+	<title>Chuyen doi tien</title>
 </head>
 <body>
-	<form method="get" accept-charset="utf-8">
-		Amout<br>
-		<input type="text" id="input" name="" value="">
-		<br>
-		From Currency <br>
-		<select id="currFrom">
-			<option value="VND">Việt Nam Đồng (VND)</option>
-			<option value="USD">Đô la Mỹ (USD)</option>
-			
-		</select>
-		<br>
-		To Currency <br>
-		<select id="currTo">
-			<option value="VND">Việt Nam Đồng (VND)</option>
-			<option value="USD">Đô la Mỹ (USD)</option>
-			
-		</select>
-		<br>
-		<input type="submit" onclick="convert()" value="Convert">
-		<br>
-	</form>
+	<div style="text-align: center;">
+		<form method="get" accept-charset="utf-8">
+			Amout:<br>
+			<input type="text" id="input" value="">
+			<br>
+			From Currency<br>
+			<select id="CurrFrom">
+				<option value="23000">Viet Nam Dong (VND)</option>
+				<option value="1">Do la My (USD)</option>
+				<option value="0.85">Euro (LAK)</option>
+				<option value="20">Rup Nga (RUB)</option>
+			</select>
+			<br>
+			To Currency<br>
+			<select id="CurrTo">
+				<option value="23000">Viet Nam Dong (VND)</option>
+				<option value="1">Do la My (USD)</option>
+				<option value="0.85">Euro (LAK)</option>
+				<option value="20">Rup Nga (RUB)</option>
+			</select>
+			<br>
+			<br>
+			<input type="button" onclick="chuyentien()" value="Convert">
+			<h2 id="demo" style="color: red;"></h2>
+		</form>
+	</div>
 
 	<script>
-		function convert() {
-			// khai báo biến lấy giá trị value qua id
-			let input = document.getElementById('input').value;
-			let currFrom = document.getElementById('currFrom').value;
-			let currTo = document.getElementById('currTo').value;
+		function chuyentien() {
+			let amout = document.getElementById('input').value;
+			let currFrom = document.getElementById('CurrFrom').value;
+			let currTo = document.getElementById('CurrTo').value;
 
-			// chuyển đổi từ kiểu chuỗi input sang kiểu số
-			let inputsss = parseInt(input);
+			amout = parseFloat(amout);
+			currFrom = parseFloat(currFrom);
+			currTo = parseFloat(currTo);
 
-			// so sánh value trong currFrom và currTo
-			if (currFrom == currTo) {
-				let result = input;
-				alert(result);
-			} else if (currFrom=="USD" && currTo==="VND") {
-				// so sánh giá trị chuyển đổi currFrom USD sang currTo VND
-				let result = inputsss * 23000;
-				alert("Chuyen tu USD sang VND: " + result);
-			} else if (currFrom=="VND" && currTo=="USD") {
-				// so sánh giá trị chuyển đổi currFrom VND sang currTo USD
-				let result = inputsss / 23000;
-				alert("Chuyen tu VND sang USD: " + result);
-			};
+			let output = amout * currTo / currFrom;
+			document.getElementById("demo").innerHTML = `Chuyen doi tu ${currFrom} sang ${currTo}: ${output}`;
 		}
+			
 	</script>
 </body>
 </html>
